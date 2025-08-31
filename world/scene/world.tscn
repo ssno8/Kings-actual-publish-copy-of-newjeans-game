@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://tpqkk0l8r0vi"]
+
+[ext_resource type="Texture2D" uid="uid://dh5apyswrtjw2" path="res://images2/TileSet2.jpeg" id="1_41er0"]
+[ext_resource type="Script" uid="uid://do7er0pbdvqo6" path="res://world/scripts/world.gd" id="1_m4x5r"]
+[ext_resource type="Texture2D" uid="uid://cfc7nadhxxtho" path="res://images2/TileSet.jpeg" id="2_m4x5r"]
+[ext_resource type="PackedScene" uid="uid://cemviuxjp5u08" path="res://world/scene/exit_door.tscn" id="3_cujjb"]
+[ext_resource type="PackedScene" uid="uid://dsy51yfjxp7hd" path="res://player/scenes/player.tscn" id="4_gk8uj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ih17f"]
+texture = ExtResource("1_41er0")
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:1/0 = 0
+7:1/0 = 0
+7:2/0 = 0
+6:2/0 = 0
+5:2/0 = 0
+4:2/0 = 0
+3:2/0 = 0
+2:2/0 = 0
+1:2/0 = 0
+2:5/0 = 0
+1:4/0 = 0
+1:5/0 = 0
+2:4/0 = 0
+2:3/0 = 0
+1:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+5:4/0 = 0
+4:4/0 = 0
+3:4/0 = 0
+5:5/0 = 0
+4:5/0 = 0
+3:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+7:4/0 = 0
+6:4/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+2:13/0 = 0
+2:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:13/0 = 0
+5:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:13/0 = 0
+4:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:13/0 = 0
+7:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ybj8j"]
+texture = ExtResource("2_m4x5r")
+14:33/0 = 0
+14:33/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+32:34/0 = 0
+32:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:33/0 = 0
+10:33/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_lprec"]
+physics_layer_0/collision_layer = 1
+sources/2 = SubResource("TileSetAtlasSource_ih17f")
+sources/3 = SubResource("TileSetAtlasSource_ybj8j")
+
+[node name="World" type="Node"]
+script = ExtResource("1_m4x5r")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_lprec")
+format = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="ExitDoor" parent="." instance=ExtResource("3_cujjb")]
+
+[node name="Player" parent="." instance=ExtResource("4_gk8uj")]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")

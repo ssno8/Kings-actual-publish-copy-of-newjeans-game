@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsy51yfjxp7hd"]
+
+[ext_resource type="Script" uid="uid://d3s3pbje2y7vr" path="res://player/scripts/player.gd" id="1_apn28"]
+[ext_resource type="Texture2D" uid="uid://sulkrpc62x7y" path="res://images2/Daniel Sprite (without background).png" id="2_t0cpu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8h4do"]
+radius = 121.0
+height = 320.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_apn28")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_t0cpu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+shape = SubResource("CapsuleShape2D_8h4do")
